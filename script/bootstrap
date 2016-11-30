@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+function bootstrap {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  local url_nomad_Darwin="https://releases.hashicorp.com/nomad/${nomad_VERSION}/nomad_${nomad_VERSION}_darwin_amd64.zip"
+  local url_nomad_Linux="https://releases.hashicorp.com/nomad/${nomad_VERSION}/nomad_${nomad_VERSION}_linux_amd64.zip"
+
+  local url_nomad="url_nomad_$(uname -s)"
+  local fnm_nomad="$(basename "${!url_nomad}")"
+  cache curl "$fnm_nomad" "${!url_nomad}"
+
+  pushd bin
+  unzip -o "${BASEBOX_CACHE}/curl/$fnm_nomad"
+
+  chmod 755 nomad
+
+  popd
+}
+
+bootstrap
