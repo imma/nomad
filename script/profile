@@ -4,7 +4,7 @@ function _nomad_profile {
   local shome="${_nomad_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$PATH"
 
-  nomad_VERSION="0.5.0"
+  nomad_VERSION="0.5.2"
 }
 
 _nomad_profile
