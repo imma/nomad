@@ -1,0 +1,24 @@
+version: '3.2'
+
+services:
+  nomad:
+    build: habitat
+    restart: always
+    network_mode: bridge
+    env_file:
+      - .env
+    ports:
+      - 4647
+    labels:
+      SERVICE_4647_CHECK_TCP: "true"
+      SERVICE_4647_CHECK_INTERVAL: "60s"
+      SERVICE_4647_NAME: "imma-nomad"
+      SERVICE_4647_TAGS: "urlprefix-imma-nomad.*/"
+    volumes:
+      - type: volume
+        source: nomad
+        target: /nomad
+        volume:
+          nocopy: true
+volumes:
+  nomad:

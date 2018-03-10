@@ -1,0 +1,14 @@
+[dev]
+mode = true
+
+[backend]
+storage = "consul"
+location = "127.0.0.1"
+port = "8500"
+path = "nomad"
+
+[listener]
+type = "tcp"
+location = "127.0.0.1"
+port = "4647"
+tls_disable = "1"

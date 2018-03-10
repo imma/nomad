@@ -1,0 +1,11 @@
+#!/bin/bash -xe
+
+exec 2>&1
+
+DEVMODE={{cfg.dev.mode}}
+
+if [ "$DEVMODE" = true ] ; then
+  exec nomad agent -dev
+else
+  exec sleep 86400 # TODO what is production
+fi

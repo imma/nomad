@@ -1,0 +1,4 @@
+/bin/consul
+/data*
+/sv
+results/
