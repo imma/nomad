@@ -1,16 +1,18 @@
-pkg := $(shell ls -thd results/*hart | head -1)
+pkg := $(shell ls -thd results/*hart 2>/dev/null | head -1)
+
+HAB_STUDIO_MODE := clone
 
 studio:
-	hab studio clone
+	hab studio $(HAB_STUDIO_CLONE)
 
 build:
-	-hab studio clone run build
+	-hab studio $(HAB_STUDIO_CLONE) run build
 
 upload:
-	-hab studio clone run hab pkg upload $(pkg)
+	-hab studio $(HAB_STUDIO_CLONE) run hab pkg upload $(pkg)
 
 export:
-	-hab studio clone run hab pkg export docker $(pkg)
+	-hab studio $(HAB_STUDIO_CLONE) run hab pkg export docker $(pkg)
 
 up:
 	$(MAKE) down
