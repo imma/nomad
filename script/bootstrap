@@ -4,8 +4,8 @@ function bootstrap {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  local url_nomad_Darwin="https://releases.hashicorp.com/nomad/${nomad_VERSION}/nomad_${nomad_VERSION}_darwin_amd64.zip"
-  local url_nomad_Linux="https://releases.hashicorp.com/nomad/${nomad_VERSION}/nomad_${nomad_VERSION}_linux_amd64.zip"
+  local url_nomad_Darwin="https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_darwin_amd64.zip"
+  local url_nomad_Linux="https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMAD_VERSION}_linux_amd64.zip"
 
   local url_nomad="url_nomad_$(uname -s)"
   local fnm_nomad="$(basename "${!url_nomad}")"
